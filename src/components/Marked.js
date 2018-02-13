@@ -1,41 +1,34 @@
-// import React, { Component } from 'react';
-//
-//
-// class Marked extends Component {
-//   var marked = require('marked');
-//   marked.setOptions({
-//     renderer: new marked.Renderer(),
-//     gfm: true,
-//     tables: false,
-//     breaks: false,
-//     pedantic: false,
-//     sanitize: false,
-//     smartLists: false,
-//     smartypants: false,
-//     xhtml: false
-//   });
-//   let cont = marked (this.props.content);
-//   render() {
-//     return (
-//       <div className="Marked">
-//         <div>Div 2 {cont}</div>
-//       </div>
-//     );
-//   }
-// }
-
-import React from 'react';
+import React, {Component} from 'react';
 import marked from 'marked';
 
 class Marked extends React.Component {
-  getMarkdownText() {
-    console.log("marked cont");
+  constructor (props){
+    super(props);
+    // this.getMarkdownText = this.getMarkdownText.bind(this);
+  }
+
+
+  getMarkdownText=() => {
+    // console.log("marked cont");
     var rawMarkup = marked(this.props.content, {sanitize: true});
+    marked.setOptions({
+    	renderer: new marked.Renderer(),
+    	gfm: true,
+    	tables: true,
+    	breaks: false,
+    	pedantic: false,
+    	sanitize: true,
+    	smartLists: true,
+    	smartypants: false
+    });
     return { __html: rawMarkup };
   }
+
   render() {
-    console.log("marked starting");
-    return <div dangerouslySetInnerHTML={this.getMarkdownText()} />
+    return <div className="markdown">
+      <p>Markdown</p>
+      <span dangerouslySetInnerHTML={this.getMarkdownText()} />;
+    </div>;
   }
 }
 
