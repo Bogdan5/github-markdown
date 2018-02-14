@@ -1,0 +1,25 @@
+/* divs that include the two components */
+.container {
+  display:inline-block;
+  vertical-align: top;
+  width: 45%;
+  padding: 5px;
+}
+
+/* title of each container of the components */
+.container-titles{
+  font-size: 21px;
+  color: rgb(114, 117, 119);
+  width:100px;
+}
+
+/* title of the app */
+.title{
+  text-align: center;
+  color: rgb(114, 117, 119);
+}
+
+/* textarea styling */
+.form-input{
+  width: 90%;
+}

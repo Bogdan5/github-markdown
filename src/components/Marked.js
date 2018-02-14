@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import marked from 'marked';
+import './style.css';
 
 class Marked extends React.Component {
   constructor (props){
     super(props);
-    // this.getMarkdownText = this.getMarkdownText.bind(this);
   }
 
-
+// function that takes the content passed from the App parent component as props and
+// turns it into markdown, which is passed to the returned div
   getMarkdownText=() => {
-    // console.log("marked cont");
     var rawMarkup = marked(this.props.content, {sanitize: true});
     marked.setOptions({
     	renderer: new marked.Renderer(),
@@ -25,8 +25,8 @@ class Marked extends React.Component {
   }
 
   render() {
-    return <div className="markdown">
-      <p>Markdown</p>
+    return <div className="container">
+      <p className="container-titles">Markdown</p>
       <span dangerouslySetInnerHTML={this.getMarkdownText()} />;
     </div>;
   }
